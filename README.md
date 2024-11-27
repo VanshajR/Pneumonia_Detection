@@ -1,6 +1,13 @@
 # Chest X-Ray Pneumonia Detection
 This repository contains a machine learning project for detecting pneumonia from chest X-ray images using Convolutional Neural Networks (CNN), Logistic Regression, XGBoost, and Support Vector Machines (SVM). The repository includes a Jupyter notebook for training the models, pre-trained model files, and a Streamlit web app for predicting pneumonia on uploaded X-ray images.
 
+# Live App
+
+The **Chest X-Ray Pneumonia Detection** app is live on Streamlit Cloud! 🚀  
+Click the link below to upload X-ray images and predict if they indicate **Pneumonia** or **Normal**:
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://pneumonia-vanshajr.streamlit.app)
+
 # Project Overview
 The goal of this project is to build a classification system for detecting pneumonia from chest X-ray images. The models in this project include:
 
