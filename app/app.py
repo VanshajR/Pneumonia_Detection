@@ -47,15 +47,3 @@ if file is not None:
     st.subheader("Prediction Results")
     st.write(f"CNN Prediction: {'Pneumonia' if cnn_preds == 0 else 'Normal'}")
     st.write(f"Logistic Regression Prediction: {'Pneumonia' if lr_preds == 0 else 'Normal'}")
-
-    true_label = 0  # 0 for 'Pneumonia', 1 for 'Normal'
-
-    # Calculate accuracies (for demonstration purposes, we're comparing with true_label)
-    cnn_accuracy = np.mean(cnn_preds == true_label) * 100
-    lr_accuracy = np.mean(lr_preds == true_label) * 100
-
-    # Display Accuracy of each model
-    st.subheader("Model Accuracies")
-    st.write(f"CNN Accuracy: {cnn_accuracy:.2f}%")
-    st.write(f"Logistic Regression Accuracy: {lr_accuracy:.2f}%")
-
