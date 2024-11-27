@@ -6,11 +6,11 @@ import pickle
 from PIL import Image
 
 # Load models (Make sure you have saved them as discussed earlier)
-with open('../models/logistic_regression_model.pkl', 'rb') as f:
+with open('models/logistic_regression_model.pkl', 'rb') as f:
     lr_model = pickle.load(f)
 
 
-cnn_model = load_model('../models/cnn_model.h5')
+cnn_model = load_model('models/cnn_model.h5')
 
 # Streamlit UI
 st.title("Chest X-Ray Pneumonia Detection")
