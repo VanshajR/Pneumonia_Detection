@@ -25,7 +25,7 @@ Make sure to download the dataset and place it in the appropriate folder if runn
 ├── models/
 │   ├── cnn_model.h5               # Trained CNN model
 │   ├── logistic_regression_model.pkl # Trained Logistic Regression model
-│   ├── xgboost_model.json         # Trained XGBoost model
+│   ├── pca_transformer.pkl         # Trained PCA model
 ├── app/
 │   ├── app.py                     # Streamlit app for pneumonia detection
 ├── notebooks/
@@ -65,7 +65,8 @@ Copy code
 ├── models/
 │   ├── cnn_model.h5               # Trained CNN model
 │   ├── logistic_regression_model.pkl # Trained Logistic Regression model
-│   ├── xgboost_model.json         # Trained XGBoost model
+│   ├── pca_transformer.pkl         # Trained PCA model
+│   ├── svm_model.pkl         # Trained SVM model
 ├── app/
 │   ├── app.py                     # Streamlit app for pneumonia detection
 ├── notebooks/
@@ -76,8 +77,8 @@ Copy code
 # Installation
 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/chest-xray-pneumonia-detection.git
-cd chest-xray-pneumonia-detection
+git clone https://github.com/VanshajR/Pneumonia_Detection.git
+cd Pneumonia_Detection
 ```
 2. Install Dependencies
 Create a virtual environment and install the necessary dependencies listed in `requirements.txt `:
