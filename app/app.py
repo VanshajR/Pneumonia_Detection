@@ -5,7 +5,7 @@ from tensorflow.keras.models import load_model
 import pickle
 from PIL import Image
 
-# Load models (Make sure you have saved them as discussed earlier)
+# Load models
 with open('models/logistic_regression_model.pkl', 'rb') as f:
     lr_model = pickle.load(f)
 
@@ -15,7 +15,7 @@ cnn_model = load_model('models/cnn_model.h5')
 st.title("Chest X-Ray Pneumonia Detection")
 
 st.markdown("""
-    **Upload an X-Ray image** and this app will predict whether the image shows **Pneumonia** or **Normal**. 
+    **Upload one or more X-Ray images**, and this app will predict whether each image shows **Pneumonia** or **Normal**. 
     This model uses **CNN** and **Logistic Regression** to make the predictions.
 """)
 
@@ -43,29 +43,60 @@ def preprocess_image(image):
         st.error(f"Error processing the image: {e}")
         return None, None
 
-# Upload the image
-file = st.file_uploader("Upload an X-ray Image", type=["jpg", "png", "jpeg"])
+# Multi-file upload section
+uploaded_files = st.file_uploader("Upload one or more X-ray Images", type=["jpg", "png", "jpeg"], accept_multiple_files=True)
 
-if file is not None:
-    # Load and display the image
-    img = Image.open(file)
-    st.image(img, caption="Uploaded X-Ray Image", use_column_width=True)
-    st.write("Classifying...")
+# If images are loaded, preview them
+if uploaded_files:
+    images = []  # List to hold loaded images
+    for file in uploaded_files:
+        try:
+            img = Image.open(file)
+            images.append(img)
+        except Exception as e:
+            st.error(f"Error loading file {file.name}: {e}")
 
-    # Preprocess the image
-    img_cnn, img_flat = preprocess_image(img)
-    
-    if img_cnn is not None and img_flat is not None:
-        # CNN Model Prediction
-        cnn_preds = cnn_model.predict(img_cnn)
-        cnn_preds = (cnn_preds > 0.5).astype(int)
+    # Display previews of all images
+    st.subheader("Preview Images")
+    cols = st.columns(min(len(images), 4))  # Display up to 4 images per row
+    for i, img in enumerate(images):
+        with cols[i % len(cols)]:
+            st.image(img, caption=f"Image {i + 1}", use_column_width=True)
 
-        # Logistic Regression Model Prediction
-        lr_preds = lr_model.predict(img_flat)
+    # Add a button to confirm before running predictions
+    if st.button("Classify Images"):
+        results = []  # To store results
+        for i, img in enumerate(images):
+            st.write(f"Classifying Image {i + 1}...")
+            img_cnn, img_flat = preprocess_image(img)
 
-        # Display Results
+            if img_cnn is not None and img_flat is not None:
+                # CNN Prediction
+                cnn_preds = cnn_model.predict(img_cnn)
+                cnn_preds = (cnn_preds > 0.5).astype(int)
+
+                # Logistic Regression Prediction
+                lr_preds = lr_model.predict(img_flat)
+
+                # Append results
+                results.append({
+                    "Image": f"Image {i + 1}",
+                    "CNN": "Pneumonia" if cnn_preds == 0 else "Normal",
+                    "Logistic Regression": "Pneumonia" if lr_preds == 0 else "Normal"
+                })
+            else:
+                results.append({
+                    "Image": f"Image {i + 1}",
+                    "CNN": "Error in processing",
+                    "Logistic Regression": "Error in processing"
+                })
+
+        # Display results
         st.subheader("Prediction Results")
-        st.write(f"CNN Prediction: {'Pneumonia' if cnn_preds == 0 else 'Normal'}")
-        st.write(f"Logistic Regression Prediction: {'Pneumonia' if lr_preds == 0 else 'Normal'}")
-    else:
-        st.error("Image preprocessing failed. Please try again.")
+        for res in results:
+            st.write(f"**{res['Image']}**")
+            st.write(f"- CNN Prediction: {res['CNN']}")
+            st.write(f"- Logistic Regression Prediction: {res['Logistic Regression']}")
+
+else:
+    st.info("Please upload one or more images to classify.")
