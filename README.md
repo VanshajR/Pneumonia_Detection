@@ -44,14 +44,13 @@ Make sure to download the dataset and place it in the appropriate folder if runn
 Certainly! Below is a README.md template for your GitHub repository. It includes an introduction, instructions for setting up and running the notebook, usage of the models, and deploying the Streamlit app.
 
 Chest X-Ray Pneumonia Detection
-This repository contains a machine learning project for detecting pneumonia from chest X-ray images using Convolutional Neural Networks (CNN), Logistic Regression, XGBoost, and Support Vector Machines (SVM). The repository includes a Jupyter notebook for training the models, pre-trained model files, and a Streamlit web app for predicting pneumonia on uploaded X-ray images.
+This repository contains a machine learning project for detecting pneumonia from chest X-ray images using Convolutional Neural Networks (CNN), Logistic Regression, and Support Vector Machines (SVM). The repository includes a Jupyter notebook for training the models, pre-trained model files, and a Streamlit web app for predicting pneumonia on uploaded X-ray images.
 
 Project Overview
 The goal of this project is to build a classification system for detecting pneumonia from chest X-ray images. The models in this project include:
 
 Convolutional Neural Network (CNN): Deep learning-based model for image classification.
 Logistic Regression: A traditional machine learning model for binary classification.
-XGBoost: A powerful gradient boosting model for classification.
 Support Vector Machine (SVM): Another classification algorithm for binary outcomes.
 The repository contains:
 
@@ -105,7 +104,7 @@ pip install -r requirements.txt
 Open the `pneumonia_detection.ipynb` notebook in Jupyter or a compatible environment like Google Colab.
 Run all the cells to:
 - Load the dataset.
-- Train the models (CNN, Logistic Regression, XGBoost, and SVM).
+- Train the models (CNN, Logistic Regression, and SVM).
 - Save the trained models into the models/ directory.
 
 4. Running the Streamlit App
