@@ -40,46 +40,6 @@ Make sure to download the dataset and place it in the appropriate folder if runn
 ├── requirements.txt               # Python dependencies for the project
 ```
 
-
-Certainly! Below is a README.md template for your GitHub repository. It includes an introduction, instructions for setting up and running the notebook, usage of the models, and deploying the Streamlit app.
-
-Chest X-Ray Pneumonia Detection
-This repository contains a machine learning project for detecting pneumonia from chest X-ray images using Convolutional Neural Networks (CNN), Logistic Regression, and Support Vector Machines (SVM). The repository includes a Jupyter notebook for training the models, pre-trained model files, and a Streamlit web app for predicting pneumonia on uploaded X-ray images.
-
-Project Overview
-The goal of this project is to build a classification system for detecting pneumonia from chest X-ray images. The models in this project include:
-
-Convolutional Neural Network (CNN): Deep learning-based model for image classification.
-Logistic Regression: A traditional machine learning model for binary classification.
-Support Vector Machine (SVM): Another classification algorithm for binary outcomes.
-The repository contains:
-
-A Jupyter Notebook that trains the models using the chest X-ray pneumonia dataset.
-Pre-trained model files for easy deployment.
-A Streamlit app for easy interaction and prediction on new chest X-ray images.
-Dataset
-The dataset used in this project is the Chest X-ray Pneumonia dataset available on Kaggle. It contains pneumonia and normal X-ray images.
-
-Link to the Dataset:
-Chest X-ray Pneumonia Dataset on Kaggle
-
-Make sure to download the dataset and place it in the appropriate folder if running the notebook locally.
-
-Repository Structure
-bash
-Copy code
-├── models/
-│   ├── cnn_model.h5               # Trained CNN model
-│   ├── logistic_regression_model.pkl # Trained Logistic Regression model
-│   ├── pca_transformer.pkl         # Trained PCA model
-│   ├── svm_model.pkl         # Trained SVM model
-├── app/
-│   ├── app.py                     # Streamlit app for pneumonia detection
-├── notebooks/
-│   ├── pneumonia_detection.ipynb   # Jupyter notebook with model training
-├── requirements.txt               # Python dependencies for the project
-├── README.md                      # This file
-
 # Installation
 1. Clone the Repository
 ```bash
